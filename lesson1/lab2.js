@@ -8,7 +8,7 @@ const FILE_NAME = 'todos.json';
 
 app.use(express.json());
 
-// Đọc danh sách từ file
+
 function loadTodos() {
   if (!fs.existsSync(FILE_NAME)) {
     fs.writeFileSync(FILE_NAME, JSON.stringify([]));
@@ -17,18 +17,18 @@ function loadTodos() {
   return JSON.parse(data);
 }
 
-// Lưu danh sách vào file
+
 function saveTodos(todos) {
   fs.writeFileSync(FILE_NAME, JSON.stringify(todos, null, 2));
 }
 
-// 📌 [GET] Lấy tất cả công việc
+
 app.get('/todos', (req, res) => {
   const todos = loadTodos();
   res.json(todos);
 });
 
-// 📌 [POST] Thêm công việc mới
+
 app.post('/todos', (req, res) => {
   const { title, description, date } = req.body;
   if (!title || !description || !date) {
@@ -49,7 +49,7 @@ app.post('/todos', (req, res) => {
   res.status(201).json(newTodo);
 });
 
-// 📌 [GET] Lấy công việc theo ID
+
 app.get('/todos/:id', (req, res) => {
   const { id } = req.params;
   const todos = loadTodos();
@@ -62,7 +62,7 @@ app.get('/todos/:id', (req, res) => {
   res.json(todo);
 });
 
-// 📌 [PUT] Cập nhật công việc
+
 app.put('/todos/:id', (req, res) => {
   const { id } = req.params;
   const { title, description, date, completed } = req.body;
@@ -86,7 +86,7 @@ app.put('/todos/:id', (req, res) => {
   res.json(todos[todoIndex]);
 });
 
-// 📌 [DELETE] Xóa công việc
+
 app.delete('/todos/:id', (req, res) => {
   const { id } = req.params;
   const todos = loadTodos();

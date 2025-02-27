@@ -1,0 +1,16 @@
+version: '3.8'
+# danh sách các dịch vụ 
+services:
+  mysql:
+    # mysql container config
+    image: mysql:8.0
+    container_name: t2311e-mysql
+    restart: always # container tự động restart nếu nó bị dừng
+    environment:
+      MYSQL_ROOT_PASSWORD: admin@123
+      MYSQL_DATABASE: t2311e
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin@123
+    ports:
+      - "3306:3306"
+    
