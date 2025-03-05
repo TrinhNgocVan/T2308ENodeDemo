@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang = 'vi'>
+    <head>
+        <meta charset="UTF-8">    
+    </head>
+    <body>
+     <div class="containter">
+        <h1> Danh sach cong viec</h1>
+         <table>
+            <tr>
+                <th>Num</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>ExpireDate</th>
+            </tr>
+            <% data.forEach(element => { %>
+          l  <tr>
+                <td> <%= element.id %></td>
+                <td> <%= element.title %></td>
+                 <td> <%= element.description %> </td>
+                 <td> <%= element.expire_date %> </td>
+            </tr>
+            <% }); %>
+        </table> 
+     </div>
+    </body>
+
+</html>
